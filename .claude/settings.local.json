@@ -17,7 +17,11 @@
       "Bash(pip --version:*)",
       "Bash(adk:*)",
       "Bash(python:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(gcloud config get-value:*)",
+      "Bash(gcloud projects:*)",
+      "Bash(./deployment/deploy_cloudrun.sh:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []

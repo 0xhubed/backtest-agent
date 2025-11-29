@@ -1,5 +1,5 @@
 """
-FastAPI wrapper for BackTestPilot ADK Agent
+FastAPI wrapper for BackTest-Agent ADK Agent
 Simplified version for Cloud Run deployment
 
 This provides a REST API interface to the ADK agent for deployment evidence.
@@ -21,7 +21,7 @@ sys.path.insert(0, str(project_root))
 from backtest_agent.agent import root_agent
 
 app = FastAPI(
-    title="BackTestPilot API",
+    title="BackTest-Agent API",
     description="AI-powered trading strategy backtesting via Google ADK",
     version="1.0.0",
     docs_url="/docs",

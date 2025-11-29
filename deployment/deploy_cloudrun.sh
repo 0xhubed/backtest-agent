@@ -64,14 +64,22 @@ for api in "${REQUIRED_APIS[@]}"; do
 done
 
 echo ""
-echo -e "${GREEN}Building and deploying to Cloud Run...${NC}"
+echo -e "${GREEN}Building Docker image with Cloud Build...${NC}"
 echo -e "${YELLOW}This may take 3-5 minutes...${NC}"
 echo ""
 
-# Build and deploy using Cloud Build
+# Build the Docker image using Cloud Build
+gcloud builds submit \
+    --config deployment/cloudbuild-adk.yaml \
+    --quiet
+
+echo ""
+echo -e "${GREEN}Deploying to Cloud Run...${NC}"
+echo ""
+
+# Deploy to Cloud Run using the built image
 gcloud run deploy $SERVICE_NAME \
-    --source . \
-    --dockerfile deployment/Dockerfile.adk \
+    --image gcr.io/$PROJECT_ID/$SERVICE_NAME:v2 \
     --region $REGION \
     --platform managed \
     --allow-unauthenticated \
@@ -109,11 +117,11 @@ echo -e "${GREEN}Testing deployment...${NC}"
 echo ""
 
 echo -e "${YELLOW}Health check:${NC}"
-curl -s $SERVICE_URL/health | python -m json.tool
+curl -s $SERVICE_URL/health | python3 -m json.tool 2>/dev/null || curl -s $SERVICE_URL/health
 
 echo ""
 echo -e "${YELLOW}Agent info:${NC}"
-curl -s $SERVICE_URL/agent-info | python -m json.tool
+curl -s $SERVICE_URL/agent-info | python3 -m json.tool 2>/dev/null || curl -s $SERVICE_URL/agent-info
 
 echo ""
 echo -e "${GREEN}========================================${NC}"
