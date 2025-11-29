@@ -21,7 +21,11 @@
       "Bash(gcloud config get-value:*)",
       "Bash(gcloud projects:*)",
       "Bash(./deployment/deploy_cloudrun.sh:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(timeout 20 python:*)",
+      "Bash(pkill:*)",
+      "Bash(timeout 120 python:*)",
+      "Bash(tree:*)"
     ],
     "deny": [],
     "ask": []

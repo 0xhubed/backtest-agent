@@ -24,6 +24,7 @@ RUN pip install --no-cache-dir -r requirements.txt && \
 COPY backtest_agent/ ./backtest_agent/
 COPY src/ ./src/
 COPY deployment/api_adk.py ./deployment/
+COPY deployment/static/ ./deployment/static/
 COPY data/ ./data/
 
 # Set environment variables

@@ -1,17 +1,15 @@
 """
-FastAPI wrapper for BackTest-Agent ADK Agent
-Simplified version for Cloud Run deployment
+Simple API for BackTest-Agent info endpoints
+Provides health check and agent information for Cloud Run deployment
 
-This provides a REST API interface to the ADK agent for deployment evidence.
+For full agent functionality, use: adk web
 """
 import os
 import sys
 from pathlib import Path
-from typing import Optional
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
 
 # Add project root to path
 project_root = Path(__file__).parent.parent
@@ -22,7 +20,7 @@ from backtest_agent.agent import root_agent
 
 app = FastAPI(
     title="BackTest-Agent API",
-    description="AI-powered trading strategy backtesting via Google ADK",
+    description="AI-powered trading strategy backtesting via Google ADK. Use 'adk web' for full functionality.",
     version="1.0.0",
     docs_url="/docs",
     redoc_url="/redoc"
@@ -38,48 +36,29 @@ app.add_middleware(
 )
 
 
-class BacktestRequest(BaseModel):
-    """Request model for backtesting queries"""
-    query: str
-    session_id: Optional[str] = None
-
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "query": "Backtest SMA(20,50) on BTC from 2020 to 2021",
-                "session_id": "user-123"
-            }
-        }
-
-
-class BacktestResponse(BaseModel):
-    """Response model for backtesting queries"""
-    response: str
-    session_id: str
-    agent_name: str
-    model: str
-
-
 @app.get("/")
 async def root():
     """
-    Root endpoint - service information
+    Root endpoint with service information
 
-    Returns basic information about the BackTestPilot API service.
+    For full agent functionality, run locally with: adk web
     """
     return {
-        "status": "healthy",
-        "service": "BackTestPilot",
+        "service": "BackTest-Agent",
         "version": "1.0.0",
-        "description": "AI-powered trading strategy backtesting",
+        "description": "AI-powered trading strategy backtesting via Google ADK",
         "agent": root_agent.name,
         "model": root_agent.model,
         "tools_count": len(root_agent.tools),
-        "endpoints": {
-            "health": "/health",
-            "tools": "/tools",
-            "backtest": "/backtest",
-            "docs": "/docs"
+        "status": "deployed",
+        "usage": {
+            "local_development": "Run 'adk web' for full agent functionality with interactive UI",
+            "api_endpoints": {
+                "health": "/health - Health check",
+                "tools": "/tools - List all 15 available tools",
+                "agent_info": "/agent-info - Detailed agent configuration",
+                "docs": "/docs - API documentation"
+            }
         }
     }
 
@@ -127,49 +106,6 @@ async def list_tools():
     }
 
 
-@app.post("/backtest", response_model=BacktestResponse)
-async def run_backtest(request: BacktestRequest):
-    """
-    Run a backtesting query via the ADK agent
-
-    Note: This is a simplified endpoint for deployment demonstration.
-    For full agent interaction with streaming responses and session management,
-    use the ADK CLI (`adk web`) or Agent Engine deployment.
-
-    Example request:
-    ```json
-    {
-        "query": "What cryptocurrencies are available?",
-        "session_id": "user-123"
-    }
-    ```
-    """
-    try:
-        # For deployment evidence, we return agent info
-        # Full agent execution would require ADK session integration
-
-        return BacktestResponse(
-            response=(
-                f"BackTestPilot agent received your query: '{request.query}'\n\n"
-                "This API demonstrates deployment to Cloud Run. "
-                "For full interactive agent capabilities with streaming responses "
-                "and session memory, please use:\n"
-                "- Agent Engine: `adk run backtest_agent --project-id PROJECT_ID`\n"
-                "- Local ADK Web UI: `adk web` at http://localhost:8000\n\n"
-                f"The agent has {len(root_agent.tools)} tools available for backtesting."
-            ),
-            session_id=request.session_id or "demo-session",
-            agent_name=root_agent.name,
-            model=root_agent.model
-        )
-
-    except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail=f"Error processing request: {str(e)}"
-        )
-
-
 @app.get("/agent-info")
 async def agent_info():
     """
@@ -191,7 +127,8 @@ async def agent_info():
             "Parameter optimization via grid search",
             "Multi-symbol parallel data fetching",
             "Comprehensive risk metrics calculation"
-        ]
+        ],
+        "usage": "Run 'adk web' locally for full interactive agent functionality"
     }
 
 
