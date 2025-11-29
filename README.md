@@ -210,8 +210,8 @@ Output:
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/backTestPilot.git
-cd backTestPilot
+git clone https://github.com/0xhubed/backtest-agent.git
+cd backtest-agent
 ```
 
 ### 2. Set Up Virtual Environment
@@ -232,13 +232,19 @@ pip install -r requirements.txt
 **Option A: Kaggle CLI** (Recommended)
 ```bash
 pip install kaggle
-kaggle datasets download -d sudalairajkumar/cryptocurrencypricehistory
-unzip cryptocurrencypricehistory.zip -d data/raw/
+kaggle datasets download -d paveljurke/crypto-prices-historical-data
+unzip crypto-prices-historical-data.zip -d data/raw/
 ```
 
 **Option B: Manual Download**
-1. Visit [Kaggle Dataset](https://www.kaggle.com/datasets/sudalairajkumar/cryptocurrencypricehistory)
+1. Visit [Kaggle Dataset](https://www.kaggle.com/datasets/paveljurke/crypto-prices-historical-data)
 2. Download and extract to `data/raw/`
+
+**Dataset Details:**
+- Updated daily with current market data through 2025
+- 18+ cryptocurrencies: BTC, ETH, LTC, XRP, BNB, ADA, DOGE, DOT, SHIB, TRX, SOL, LEO, UNI, AVAX, TON, LINK, BCH, NEAR
+- OHLCV data (Open, High, Low, Close, Volume in USD)
+- Daily granularity
 
 ### 5. Configure API Credentials
 
@@ -316,7 +322,7 @@ jupyter notebook notebooks/03_demo.ipynb
 ### Example 1: Simple Backtest
 
 ```python
-query = "Backtest SMA(20, 50) on BTC from 2021 to 2024"
+query = "Backtest SMA(20, 50) on BTC from 2023 to 2025"
 ```
 
 **Output:**
@@ -324,7 +330,7 @@ query = "Backtest SMA(20, 50) on BTC from 2021 to 2024"
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Strategy: SMA Crossover (20, 50)
 Symbol: BTC
-Period: 2021-01-01 to 2024-12-31
+Period: 2023-01-01 to 2025-11-28
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Performance Metrics:
@@ -345,7 +351,7 @@ Trade Statistics:
 ### Example 2: Multi-Asset Comparison
 
 ```python
-query = "Compare SMA vs RSI vs Buy-and-Hold on BTC, ETH, and LTC"
+query = "Compare SMA vs RSI vs Buy-and-Hold on BTC, ETH, and SOL"
 ```
 
 **Output:**
@@ -429,7 +435,7 @@ Best Performer:
 ## 📁 Project Structure
 
 ```
-backTestPilot/
+backtest-agent/
 ├── README.md                    # This file
 ├── PROJECT_DESCRIPTION.md       # Kaggle submission description
 ├── DEPLOYMENT_GUIDE.md          # Deployment instructions
@@ -534,10 +540,10 @@ uvicorn deployment.api_adk:app --reload --host 0.0.0.0 --port 8000
 
 ```bash
 # Build image
-docker build -f deployment/Dockerfile.adk -t backtestpilot:latest .
+docker build -f deployment/Dockerfile.adk -t backtest-agent:latest .
 
 # Run container
-docker run -p 8080:8080 --env-file .env backtestpilot:latest
+docker run -p 8080:8080 --env-file .env backtest-agent:latest
 ```
 
 ### Google Cloud Run Deployment
@@ -548,15 +554,15 @@ gcloud auth login
 gcloud config set project YOUR_PROJECT_ID
 
 # Build and deploy
-gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/backtestpilot
-gcloud run deploy backtestpilot \
-  --image gcr.io/YOUR_PROJECT_ID/backtestpilot \
+gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/backtest-agent
+gcloud run deploy backtest-agent \
+  --image gcr.io/YOUR_PROJECT_ID/backtest-agent \
   --platform managed \
   --region us-central1 \
   --allow-unauthenticated
 ```
 
-**Deployed Endpoint**: `https://backtestpilot-xxx-uc.a.run.app`
+**Deployed Endpoint**: `https://backtest-agent-xxx-uc.a.run.app`
 
 ### REST API Usage
 
@@ -580,21 +586,24 @@ curl https://your-endpoint.run.app/experiments/42
 
 ## 📊 Dataset
 
-**Source**: [Cryptocurrency Historical Prices (Kaggle)](https://www.kaggle.com/datasets/sudalairajkumar/cryptocurrencypricehistory)
+**Source**: [Crypto Prices Historical Data (Kaggle)](https://www.kaggle.com/datasets/paveljurke/crypto-prices-historical-data)
 
-**Included Symbols**:
-- Bitcoin (BTC)
-- Ethereum (ETH)
-- Litecoin (LTC)
-- Ripple (XRP)
+**Included Symbols** (18+ cryptocurrencies):
+- Bitcoin (BTC), Ethereum (ETH), Litecoin (LTC), Ripple (XRP)
+- Binance Coin (BNB), Cardano (ADA), Dogecoin (DOGE)
+- Polkadot (DOT), Shiba Inu (SHIB), Tron (TRX)
+- Solana (SOL), UNUS SED LEO (LEO), Uniswap (UNI)
+- Avalanche (AVAX), Toncoin (TON), Chainlink (LINK)
+- Bitcoin Cash (BCH), NEAR Protocol (NEAR)
 
 **Data Fields**:
-- Date, Open, High, Low, Close, Volume
-- Market Cap (optional)
+- Date, Open, High, Low, Close, Volume (USD)
 
-**Coverage**: 2017 - 2024 (daily data)
+**Coverage**: Historical data through 2025 (updated daily)
 
-**Size**: ~500 KB total
+**Size**: ~1.8 MB total
+
+**Update Frequency**: Daily (last updated: Nov 28, 2025)
 
 ---
 
@@ -697,12 +706,10 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 📧 Contact
 
-**Author**: Your Name
-**Email**: your.email@example.com
-**LinkedIn**: [your-linkedin](https://linkedin.com/in/yourprofile)
-**GitHub**: [@yourusername](https://github.com/yourusername)
+**Author**: 0xhubed
+**GitHub**: [@0xhubed](https://github.com/0xhubed)
 
-**Project Link**: [https://github.com/yourusername/backTestPilot](https://github.com/yourusername/backTestPilot)
+**Project Link**: [https://github.com/0xhubed/backtest-agent](https://github.com/0xhubed/backtest-agent)
 
 ---
 

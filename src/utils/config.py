@@ -44,11 +44,27 @@ RISK_FREE_RATE = float(os.getenv("RISK_FREE_RATE", "0.02"))  # 2% annual
 TRADING_DAYS_PER_YEAR = 252
 
 # Supported cryptocurrency symbols
+# New dataset: Crypto Prices Historical Data (Updated daily)
+# https://www.kaggle.com/datasets/paveljurke/crypto-prices-historical-data
 SUPPORTED_SYMBOLS = {
-    "BTC": "coin_Bitcoin.csv",
-    "ETH": "coin_Ethereum.csv",
-    "LTC": "coin_Litecoin.csv",
-    "XRP": "coin_XRP.csv"
+    "BTC": "BTC.csv",
+    "ETH": "ETH.csv",
+    "LTC": "LTC.csv",
+    "XRP": "XRP.csv",
+    "BNB": "BNB.csv",
+    "ADA": "ADA.csv",
+    "DOGE": "DOGE.csv",
+    "DOT": "DOT.csv",
+    "SHIB": "SHIB.csv",
+    "TRX": "TRX.csv",
+    "SOL": "SOL.csv",
+    "LEO": "LEO.csv",
+    "UNI": "UNI.csv",
+    "AVAX": "AVAX.csv",
+    "TON": "TON.csv",
+    "LINK": "LINK.csv",
+    "BCH": "BCH.csv",
+    "NEAR": "NEAR.csv"
 }
 
 # Backtest Configuration

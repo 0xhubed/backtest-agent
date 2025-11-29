@@ -26,10 +26,10 @@ curl http://localhost:8000/health
 
 ```bash
 # Build image
-docker build -t backtestpilot:latest -f deployment/Dockerfile .
+docker build -t backtest-agent:latest -f deployment/Dockerfile .
 
 # Run container
-docker run -p 8080:8080 --env-file .env backtestpilot:latest
+docker run -p 8080:8080 --env-file .env backtest-agent:latest
 
 # Test
 curl http://localhost:8080/health
@@ -73,7 +73,7 @@ PORT=8080
 
 ## Monitoring
 
-- **Logs**: `gcloud run services logs read backtestpilot --region us-central1`
+- **Logs**: `gcloud run services logs read backtest-agent --region us-central1`
 - **Metrics**: `GET /metrics` endpoint (Prometheus format)
 - **Traces**: Available in Google Cloud Trace
 
@@ -92,7 +92,7 @@ Adjust in `cloudbuild.yaml` or `service.yaml` as needed.
 ## Troubleshooting
 
 ### Container fails to start
-- Check logs: `gcloud run services logs read backtestpilot`
+- Check logs: `gcloud run services logs read backtest-agent`
 - Verify environment variables are set
 - Ensure data files are accessible
 

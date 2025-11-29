@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(pip install:*)",
+      "Bash(chmod:*)",
+      "Bash(kaggle datasets download:*)",
+      "Bash(unzip:*)",
+      "Bash(python3:*)",
+      "Bash(pip index:*)",
+      "Bash(sudo add-apt-repository:*)",
+      "Bash(./install_python310.sh:*)",
+      "Bash(apt-cache search:*)",
+      "Bash(sudo apt install:*)",
+      "Bash(python3.11:*)",
+      "Bash(source venv311/bin/activate)",
+      "Bash(pip --version:*)",
+      "Bash(adk:*)",
+      "Bash(python:*)",
+      "Bash(find:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

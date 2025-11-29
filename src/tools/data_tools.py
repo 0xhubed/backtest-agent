@@ -170,11 +170,18 @@ def load_ohlcv(symbol: str, start_date: str, end_date: str, use_cache: bool = Tr
         # Read CSV file
         df = pd.read_csv(csv_path)
 
+        # Normalize column names to title case (handle both 'date' and 'Date')
+        df.columns = df.columns.str.title()
+
         # Convert Date column to datetime
         df['Date'] = pd.to_datetime(df['Date'])
 
         # Set Date as index
         df.set_index('Date', inplace=True)
+
+        # Drop ticker column if it exists (not needed for analysis)
+        if 'Ticker' in df.columns:
+            df.drop('Ticker', axis=1, inplace=True)
 
         # Sort by date
         df.sort_index(inplace=True)
@@ -295,6 +302,10 @@ def get_data_info(symbol: str) -> Dict:
     try:
         # Read CSV to get info
         df = pd.read_csv(csv_path)
+
+        # Normalize column names to title case
+        df.columns = df.columns.str.title()
+
         df['Date'] = pd.to_datetime(df['Date'])
 
         min_date = df['Date'].min().strftime('%Y-%m-%d')

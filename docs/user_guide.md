@@ -32,8 +32,8 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 # Download dataset
-kaggle datasets download -d sudalairajkumar/cryptocurrencypricehistory
-unzip cryptocurrencypricehistory.zip -d data/raw/
+kaggle datasets download -d paveljurke/crypto-prices-historical-data
+unzip crypto-prices-historical-data.zip -d data/raw/
 
 # Configure credentials
 cp .env.example .env
@@ -44,7 +44,7 @@ cp .env.example .env
 
 ```bash
 # Test the system
-python src/main.py --query "Backtest SMA on BTC from 2021 to 2024"
+python src/main.py --query "Backtest SMA on BTC from 2023 to 2025"
 ```
 
 If successful, you'll see a comprehensive backtest report!
@@ -69,7 +69,7 @@ This starts a conversational session where you can ask follow-up questions.
 **Examples**:
 ```bash
 # Simple backtest
-python src/main.py --query "Backtest SMA(20,50) on BTC from 2021 to 2024"
+python src/main.py --query "Backtest SMA(20,50) on BTC from 2023 to 2025"
 
 # Strategy comparison
 python src/main.py --query "Compare SMA vs RSI on ETH"
@@ -91,7 +91,7 @@ agent = UserAgent()
 
 # Submit request
 result = await agent.process_request(
-    query="Compare SMA vs RSI on BTC from 2021 to 2024"
+    query="Compare SMA vs RSI on BTC from 2023 to 2025"
 )
 
 # Access results
@@ -109,7 +109,7 @@ uvicorn deployment.api:app --host 0.0.0.0 --port 8000
 curl -X POST http://localhost:8000/backtest \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "Compare SMA vs RSI on BTC from 2021 to 2024"
+    "query": "Compare SMA vs RSI on BTC from 2023 to 2025"
   }'
 
 # Get experiment results
@@ -210,7 +210,7 @@ Have a multi-turn conversation to refine your strategy.
 
 **Example Session**:
 ```
-You: "Backtest SMA on BTC from 2021 to 2024"
+You: "Backtest SMA on BTC from 2023 to 2025"
 Agent: [Shows results: Sharpe 1.32]
 
 You: "Now try RSI instead"
@@ -247,16 +247,16 @@ Agent: [Tests SMA(12,55) on ETH: Sharpe 1.68]
 ### Date Specifications
 
 **Absolute Dates**:
-- `from 2021 to 2024`
-- `from 2021-01-01 to 2024-12-31`
-- `from Jan 2021 to Dec 2024`
+- `from 2023 to 2025`
+- `from 2023-01-01 to 2025-11-28`
+- `from Jan 2023 to Nov 2025`
 
 **Relative Dates**:
 - `last year`
 - `last 6 months`
 - `past 90 days`
 
-**Default**: If no date range specified, uses all available data (2017-2024).
+**Default**: If no date range specified, uses all available data (updated daily through 2025).
 
 ### Query Templates
 
@@ -264,7 +264,7 @@ Agent: [Tests SMA(12,55) on ETH: Sharpe 1.68]
 ```
 "Backtest [STRATEGY] on [SYMBOL] from [START] to [END]"
 ```
-Example: `"Backtest SMA(20,50) on BTC from 2021 to 2024"`
+Example: `"Backtest SMA(20,50) on BTC from 2023 to 2025"`
 
 **2. Strategy Comparison**:
 ```
@@ -335,7 +335,7 @@ Example: `"What was our best ETH strategy last month?"`
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Strategy: SMA Crossover (20, 50)
 Symbol: BTC
-Period: 2021-01-01 to 2024-12-31
+Period: 2023-01-01 to 2025-11-28
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Performance Metrics:
@@ -390,7 +390,7 @@ If your strategy doesn't beat Buy-and-Hold on a risk-adjusted basis (Sharpe), st
 A strategy that works on BTC might fail on ETH. Always validate across assets.
 
 ```
-Query: "Test SMA(20,50) on BTC, ETH, LTC, and XRP"
+Query: "Test SMA(20,50) on BTC, ETH, SOL, and LINK"
 ```
 
 ### 3. Beware of Overfitting
@@ -430,14 +430,14 @@ BackTestPilot validates this automatically but it's good to be aware.
 
 **Solution**:
 - Check spelling (BTC not Bitcoin)
-- Use supported symbols: BTC, ETH, LTC, XRP
+- Use supported symbols: BTC, ETH, LTC, XRP, BNB, ADA, DOGE, SOL, LINK, and more (18+ cryptocurrencies)
 
 ### "Insufficient data for strategy"
 
 **Problem**: Not enough historical data for indicators.
 
 **Solution**:
-- Extend date range (e.g., start from 2020 instead of 2024)
+- Extend date range (e.g., start from 2022 instead of 2025)
 - Use shorter indicator periods (e.g., SMA(10,30) instead of SMA(100,200))
 
 ### "Optimization did not meet targets"
@@ -501,7 +501,7 @@ A: Default is 0% (common for crypto). Can be adjusted in configuration for tradi
 
 **Q: What's the maximum backtest duration?**
 
-A: Dataset spans 2017-2024 (~7 years). You can backtest the entire period or any subset.
+A: Dataset is updated daily and covers historical data through 2025. You can backtest any period with sufficient data.
 
 **Q: Can I export results?**
 

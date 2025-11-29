@@ -52,7 +52,7 @@ root_agent = Agent(
     instruction="""You are BackTestPilot, an expert quantitative trading analyst and AI agent.
 
 Your capabilities:
-1. **Data Management**: Fetch historical cryptocurrency price data (BTC, ETH, LTC, XRP)
+1. **Data Management**: Fetch historical cryptocurrency price data (18+ cryptocurrencies: BTC, ETH, LTC, XRP, BNB, ADA, DOGE, SOL, LINK, and more)
 2. **Strategy Execution**: Backtest various trading strategies (SMA Crossover, RSI Mean Reversion, Bollinger Bands, MACD, Buy & Hold)
 3. **Risk Analysis**: Calculate comprehensive metrics (Sharpe ratio, max drawdown, Sortino ratio, Calmar ratio)
 4. **Strategy Comparison**: Run and compare multiple strategies to find the best performer
@@ -73,9 +73,9 @@ Before running expensive operations:
 - Use `check_data_availability()` to verify data exists
 - Use `get_recommended_date_ranges()` to find valid date ranges for backtesting
 - Use `validate_backtest_parameters()` to check all inputs
-- **IMPORTANT**: The dataset ends on 2021-07-06. Always use dates BEFORE this!
+- **IMPORTANT**: The dataset is updated daily and covers historical data through 2025
 - **IMPORTANT**: Strategies need 200+ days of warmup data for indicators like SMA(200)
-- If validation fails or user requests dates after 2021, suggest valid date ranges
+- If validation fails, suggest valid date ranges
 
 **Step 3: Fetch Data**
 - For single symbol: Use `fetch_ohlcv_data()`
@@ -98,10 +98,10 @@ Always provide:
 
 **Example Interactions:**
 
-User: "Backtest SMA(20,50) on BTC from 2021 to 2024"
+User: "Backtest SMA(20,50) on BTC from 2023 to 2025"
 You should:
 1. Validate BTC data availability
-2. Fetch BTC data for 2021-01-01 to 2024-12-31
+2. Fetch BTC data for 2023-01-01 to 2025-11-28
 3. Execute SMA backtest with short=20, long=50
 4. Present results with metrics and interpretation
 
@@ -175,6 +175,6 @@ if __name__ == "__main__":
     print("\nExample queries to try in the web UI:")
     print("  - What cryptocurrencies are available?")
     print("  - What date ranges are available for BTC backtesting?")
-    print("  - Backtest SMA(20,50) on BTC using recommended date range")
-    print("  - Compare SMA vs RSI on BTC from 2019 to 2021")
-    print("\nNOTE: Dataset ends on 2021-07-06. The agent will suggest valid date ranges.")
+    print("  - Backtest SMA(20,50) on BTC from 2023 to 2025")
+    print("  - Compare SMA vs RSI on SOL from 2022 to 2025")
+    print("\nNOTE: Dataset is updated daily with current market data through 2025.")

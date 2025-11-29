@@ -173,10 +173,10 @@ The optimization tools use grid search to find optimal parameters:
 
 Gemini provides orchestration and contextual awareness:
 
-**Dataset Awareness**: The Kaggle cryptocurrency dataset ends on 2021-07-06. When users request recent dates, the agent:
+**Dataset Awareness**: The Kaggle cryptocurrency dataset is updated daily through 2025. The agent:
 - Proactively validates date ranges
-- Suggests valid alternatives
-- Explains why certain dates aren't available
+- Suggests optimal date ranges for backtesting
+- Provides information about data availability
 
 **Warmup Requirements**: Technical indicators require historical data. For SMA(200), you need 200+ days of warmup. The agent:
 - Automatically calculates required warmup periods
@@ -194,7 +194,7 @@ Gemini provides orchestration and contextual awareness:
 - **Framework**: Google ADK 1.19.0+ (Agent Development Kit)
 - **LLM**: Gemini via Google AI Studio / Vertex AI
 - **Language**: Python 3.11+
-- **Data Source**: Kaggle Cryptocurrency Historical Prices (2017-2021, daily OHLCV)
+- **Data Source**: Kaggle Crypto Prices Historical Data (updated daily through 2025, OHLCV for 18+ cryptocurrencies)
 - **Key Libraries**: pandas (data processing), numpy (numerical computations), matplotlib (visualization)
 - **Interface**: ADK Web UI (localhost:8000) - chat-based interaction
 - **Testing**: pytest (33 tests, 100% passing)

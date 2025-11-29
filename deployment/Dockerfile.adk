@@ -16,7 +16,9 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 
 # Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Note: Uncomment google-adk in requirements if not already done
+RUN pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir google-adk
 
 # Copy application code
 COPY backtest_agent/ ./backtest_agent/

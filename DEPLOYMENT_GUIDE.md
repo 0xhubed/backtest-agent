@@ -255,7 +255,7 @@ export PROJECT_ID="your-project-id"
 gcloud config set project $PROJECT_ID
 
 # Build and deploy
-gcloud run deploy backtestpilot \
+gcloud run deploy backtest-agent \
   --source . \
   --region us-central1 \
   --platform managed \
@@ -263,7 +263,7 @@ gcloud run deploy backtestpilot \
   --set-env-vars GOOGLE_API_KEY=$GOOGLE_API_KEY
 
 # Get the URL
-gcloud run services describe backtestpilot \
+gcloud run services describe backtest-agent \
   --region us-central1 \
   --format="value(status.url)"
 ```
@@ -272,7 +272,7 @@ gcloud run services describe backtestpilot \
 
 ```bash
 # Get your Cloud Run URL
-export SERVICE_URL=$(gcloud run services describe backtestpilot \
+export SERVICE_URL=$(gcloud run services describe backtest-agent \
   --region us-central1 \
   --format="value(status.url)")
 
@@ -300,7 +300,7 @@ BackTestPilot is deployed to Google Cloud Run.
 **Deployment Details**:
 - Platform: Google Cloud Run
 - Region: us-central1
-- Service URL: https://backtestpilot-xxx-uc.a.run.app
+- Service URL: https://backtest-agent-xxx-uc.a.run.app
 - Container: Python 3.11 + Google ADK
 - Auto-scaling: 0-10 instances
 
@@ -312,7 +312,7 @@ BackTestPilot is deployed to Google Cloud Run.
 
 **Example**:
 ```bash
-curl https://backtestpilot-xxx-uc.a.run.app/tools
+curl https://backtest-agent-xxx-uc.a.run.app/tools
 ```
 
 **Evidence**: See deployment_screenshot.png and service URL above.
@@ -386,7 +386,7 @@ root_agent = Agent(
 #!/bin/bash
 # deployment/deploy.sh
 
-gcloud run deploy backtestpilot \
+gcloud run deploy backtest-agent \
   --source . \
   --region us-central1 \
   --platform managed \

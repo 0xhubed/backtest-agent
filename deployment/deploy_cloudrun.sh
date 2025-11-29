@@ -24,7 +24,7 @@ else
 fi
 
 # Configuration
-SERVICE_NAME="backtestpilot"
+SERVICE_NAME="backtest-agent"
 REGION="us-central1"
 IMAGE_NAME="gcr.io/${PROJECT_ID}/${SERVICE_NAME}"
 
