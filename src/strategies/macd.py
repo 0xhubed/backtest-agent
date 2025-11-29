@@ -89,7 +89,7 @@ class MACD(BaseStrategy):
         # Generate signals based on MACD and signal line crossovers
         # Buy when MACD crosses above signal line
         macd_above = (macd_line > signal_line).fillna(False)
-        macd_above_prev = macd_above.shift(1).fillna(False)
+        macd_above_prev = macd_above.shift(1).fillna(False).infer_objects(copy=False)
 
         # Bullish crossover
         bullish_cross = (macd_above) & (~macd_above_prev)
