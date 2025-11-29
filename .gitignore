@@ -208,7 +208,7 @@ marimo/_lsp/
 __marimo__/
 
 # ============================================
-# BackTestPilot Project Specific
+# Backtest Agent Project Specific
 # ============================================
 
 # Data files (Kaggle datasets and processed data)

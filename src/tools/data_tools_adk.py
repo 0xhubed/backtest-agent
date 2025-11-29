@@ -1,5 +1,5 @@
 """
-ADK-compatible data tools for BackTestPilot.
+ADK-compatible data tools for Backtest Agent.
 
 These are plain Python functions that serve as tools for Google ADK agents.
 Each function has proper type hints and docstrings that ADK uses to understand
@@ -134,7 +134,7 @@ def get_available_symbols() -> dict:
     return {
         "symbols": symbols,
         "count": len(symbols),
-        "description": f"BackTestPilot supports {len(symbols)} cryptocurrencies: {', '.join(symbols)}"
+        "description": f"Backtest Agent supports {len(symbols)} cryptocurrencies: {', '.join(symbols)}"
     }
 
 

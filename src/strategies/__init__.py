@@ -1,5 +1,5 @@
 """
-Trading strategies for BackTestPilot.
+Trading strategies for Backtest Agent.
 
 Provides various technical trading strategies including trend-following,
 mean reversion, and momentum strategies.

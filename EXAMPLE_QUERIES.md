@@ -1,6 +1,6 @@
-# BackTestPilot ADK Agent - Example Queries
+# Backtest Agent ADK Agent - Example Queries
 
-This file contains example queries that work with the Google ADK-based BackTestPilot agent.
+This file contains example queries that work with the Google ADK-based Backtest Agent.
 
 ## Data Coverage
 
@@ -280,6 +280,6 @@ Here's a complete workflow example:
 
 **Last Updated**: November 29, 2025
 **Dataset Version**: Daily updates through 2025-11-27
-**Agent**: BackTestPilot using Google ADK 1.19.0 with Gemini 2.0 Flash
+**Agent**: Backtest Agent using Google ADK 1.19.0 with Gemini 2.0 Flash
 **Total Tools**: 15 (6 data, 6 backtest, 3 optimization)
 **Total Cryptocurrencies**: 18

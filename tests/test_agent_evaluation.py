@@ -1,5 +1,5 @@
 """
-Agent evaluation framework for BackTestPilot.
+Agent evaluation framework for Backtest Agent.
 
 Tests and evaluates agent performance across various dimensions:
 - NLP parsing accuracy

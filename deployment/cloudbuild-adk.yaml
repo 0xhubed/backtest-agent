@@ -1,4 +1,4 @@
-# Cloud Build configuration for BackTestPilot with custom Dockerfile
+# Cloud Build configuration for Backtest Agent with custom Dockerfile
 steps:
   # Build the Docker image using Dockerfile.adk
   - name: 'gcr.io/cloud-builders/docker'

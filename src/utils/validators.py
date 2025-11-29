@@ -1,5 +1,5 @@
 """
-Input validation utilities for BackTestPilot.
+Input validation utilities for Backtest Agent.
 
 Provides functions to validate user inputs, date ranges, parameters,
 and symbol existence.

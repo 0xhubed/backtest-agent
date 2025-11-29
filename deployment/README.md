@@ -1,6 +1,6 @@
-# BackTestPilot Deployment Guide
+# Backtest Agent Deployment Guide
 
-This directory contains all deployment configurations for BackTestPilot.
+This directory contains all deployment configurations for Backtest Agent.
 
 ## Files
 

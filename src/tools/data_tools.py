@@ -1,5 +1,5 @@
 """
-Data loading and caching tools for BackTestPilot.
+Data loading and caching tools for Backtest Agent.
 
 Provides functions to load OHLCV data from CSV files, validate data,
 and cache processed data for faster subsequent runs.

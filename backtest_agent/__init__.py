@@ -1,5 +1,5 @@
 """
-BackTestPilot - Google ADK Multi-Agent Backtesting System
+Backtest Agent - Google ADK Multi-Agent Backtesting System
 
 This module exports the root agent for use with Google ADK CLI.
 Run with: adk web

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Deploy BackTestPilot to Google Cloud Run
+# Deploy Backtest Agent to Google Cloud Run
 # Usage: ./deploy_cloudrun.sh [PROJECT_ID]
 
 set -e
@@ -11,7 +11,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 echo -e "${GREEN}========================================${NC}"
-echo -e "${GREEN}BackTestPilot - Cloud Run Deployment${NC}"
+echo -e "${GREEN}Backtest Agent - Cloud Run Deployment${NC}"
 echo -e "${GREEN}========================================${NC}"
 echo ""
 

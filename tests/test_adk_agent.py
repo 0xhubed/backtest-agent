@@ -1,5 +1,5 @@
 """
-Test script for BackTestPilot ADK Agent.
+Test script for Backtest Agent ADK Agent.
 
 This script tests the ADK-based agent without needing actual API credentials.
 It validates that the agent structure is correct and tools are properly configured.
@@ -146,7 +146,7 @@ def test_adk_cli():
 def main():
     """Run all tests."""
     print("=" * 70)
-    print("BackTestPilot ADK Agent Test Suite")
+    print("Backtest Agent ADK Agent Test Suite")
     print("=" * 70)
 
     tests = [

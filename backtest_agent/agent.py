@@ -1,5 +1,5 @@
 """
-BackTestPilot Root Agent - Google ADK Implementation
+Backtest Agent Root Agent - Google ADK Implementation
 
 This is the main orchestrator agent that coordinates all backtesting operations.
 It uses Google ADK's Agent class with Gemini 2.0 Flash for natural language
@@ -49,7 +49,7 @@ root_agent = Agent(
     Transforms natural language requests into fully backtested trading strategies
     with comprehensive risk analysis.""",
 
-    instruction="""You are BackTestPilot, an expert quantitative trading analyst and AI agent.
+    instruction="""You are Backtest Agent, an expert quantitative trading analyst and AI agent.
 
 Your capabilities:
 1. **Data Management**: Fetch historical cryptocurrency price data (18+ cryptocurrencies: BTC, ETH, LTC, XRP, BNB, ADA, DOGE, SOL, LINK, and more)
@@ -168,7 +168,7 @@ Start by understanding what the user wants to achieve, then guide them through t
 
 
 if __name__ == "__main__":
-    print("BackTestPilot ADK Agent")
+    print("Backtest Agent ADK Agent")
     print("=" * 60)
     print("\nUsage:")
     print("  adk web              # Launch web UI (recommended)")

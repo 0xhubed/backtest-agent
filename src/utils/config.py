@@ -1,5 +1,5 @@
 """
-Configuration management for BackTestPilot.
+Configuration management for Backtest Agent.
 
 This module loads environment variables and provides configuration constants
 for the entire application.

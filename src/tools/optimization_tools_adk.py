@@ -1,5 +1,5 @@
 """
-ADK-compatible optimization tools for BackTestPilot.
+ADK-compatible optimization tools for Backtest Agent.
 
 These tools perform parameter optimization for trading strategies to find
 the best parameters that meet user-defined goals (e.g., Sharpe > 1.5).

@@ -1,5 +1,5 @@
 """
-Tools module for BackTestPilot.
+Tools module for Backtest Agent.
 
 This module contains all tool functions used by agents for:
 - Data loading and processing

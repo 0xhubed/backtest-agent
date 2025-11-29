@@ -1,4 +1,4 @@
-# BackTestPilot - Google ADK Agent
+# Backtest Agent - Google ADK Agent
 # IMPORTANT: Requires Python 3.10+ for full ADK support
 # Current Python 3.8 - Use FastAPI REST API instead of ADK CLI
 

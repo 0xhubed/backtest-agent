@@ -1,5 +1,5 @@
 """
-Performance profiling utilities for BackTestPilot.
+Performance profiling utilities for Backtest Agent.
 
 Provides tools to profile and analyze performance bottlenecks in
 agent execution, backtesting, and data operations.

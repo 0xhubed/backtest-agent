@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test script to verify BackTestPilot ADK tools are working correctly.
+Test script to verify Backtest Agent ADK tools are working correctly.
 """
 
 import sys
@@ -165,7 +165,7 @@ def test_buy_hold_backtest():
 
 if __name__ == "__main__":
     print("\n" + "="*80)
-    print("BackTestPilot ADK Tools Test Suite")
+    print("Backtest Agent ADK Tools Test Suite")
     print("="*80)
 
     try:

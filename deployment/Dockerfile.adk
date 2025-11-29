@@ -1,4 +1,4 @@
-# Dockerfile for BackTestPilot ADK Agent
+# Dockerfile for Backtest Agent ADK Agent
 # Optimized for Google Cloud Run deployment
 
 FROM python:3.11-slim as base

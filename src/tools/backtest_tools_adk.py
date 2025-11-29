@@ -1,5 +1,5 @@
 """
-ADK-compatible backtesting tools for BackTestPilot.
+ADK-compatible backtesting tools for Backtest Agent.
 
 These tools execute trading strategies and return backtest results.
 They wrap the existing strategy classes to provide a clean ADK interface.
