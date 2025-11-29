@@ -140,6 +140,7 @@ celerybeat.pid
 .venv
 env/
 venv/
+venv311/
 ENV/
 env.bak/
 venv.bak/
@@ -205,3 +206,117 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# ============================================
+# BackTestPilot Project Specific
+# ============================================
+
+# Data files (Kaggle datasets and processed data)
+data/raw/*.csv
+data/raw/*.json
+data/processed/
+data/cache/
+*.parquet
+*.feather
+*.hdf5
+*.h5
+
+# Experiment memory and databases
+experiments/
+*.db
+*.sqlite
+*.sqlite3
+
+# API Keys and Credentials (CRITICAL - DO NOT COMMIT)
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+credentials.json
+service-account.json
+api_keys.txt
+secrets/
+
+# Google Cloud credentials
+gcloud-credentials.json
+*-key.json
+application_default_credentials.json
+
+# Model outputs and checkpoints
+models/
+checkpoints/
+*.pkl
+*.pickle
+*.joblib
+
+# Generated reports and visualizations
+reports/
+outputs/
+*.png
+*.jpg
+*.jpeg
+*.pdf
+*.svg
+!docs/diagrams/*.png
+!docs/diagrams/*.svg
+!examples/example_outputs/*.png
+
+# Logs and monitoring
+logs/
+*.log
+trace/
+metrics/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# ADK deployment temporary folders
+backtest_agent_tmp*/
+
+# Jupyter Notebook outputs (keep notebooks, ignore outputs)
+*.ipynb_checkpoints/
+.ipynb_checkpoints
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+eviews.db
+Desktop.ini
+
+# Linux
+*~
+
+# IDE specific
+.idea/
+*.swp
+*.swo
+.vscode/settings.json
+.vscode/launch.json
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Terraform (if used for deployment)
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# Backup files
+*.bak
+*.backup
+
+# Large datasets (example files OK, full datasets ignored)
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/sample_*.csv
+
+# Zone Identifier files (Windows WSL artifact)
+*.Zone.Identifier
